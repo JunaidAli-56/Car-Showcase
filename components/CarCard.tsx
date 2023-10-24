@@ -3,11 +3,13 @@ import { CarProps } from '@/types';
 import { calculateCarRent } from '@/utils';
 import Image from 'next/image';
 import { useState } from 'react'
+import { CustomButton } from '@/components';
 
 interface CarCardProps {
     car: CarProps
 }
 const CarCard = ({ car }: CarCardProps) => {
+    const [isOpen, setIsOpen] = useState(false)
     const { city_mpg, year, make, model, transmission, drive } = car;
     const carRent = calculateCarRent(city_mpg, year);
     return (
@@ -39,6 +41,23 @@ const CarCard = ({ car }: CarCardProps) => {
                         <Image src="/steering-wheel.svg" alt='steering wheel' height={20} width={20} />
                         <p>{transmission === "a" ? "Automatic" : "Manual"}</p>
                     </div>
+                    <div className='flex flex-col gap-2 justify-center items-center'>
+                        <Image src="/tire.svg" alt='tire' height={20} width={20} />
+                        <p>{drive.toUpperCase()}</p>
+                    </div>
+                    <div className='flex flex-col gap-2 justify-center items-center'>
+                        <Image src="/gas.svg" alt='gas' height={20} width={20} />
+                        <p>{city_mpg} MPG</p>
+                    </div>
+                </div>
+                <div className='car-card__btn-container'>
+                    <CustomButton
+                        title='view more'
+                        containerStyle='w-full py-[16px] rounded-full bg-primary-blue'
+                        textStyle="text-white text-[14px] leading-[17px] font-bold"
+                        rightIcon="/right-arrow.svg"
+                        handleClick={() => setIsOpen(true)}
+                    />
                 </div>
             </div>
         </div>
