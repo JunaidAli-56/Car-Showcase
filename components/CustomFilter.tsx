@@ -1,7 +1,12 @@
 'use client'
-const CustomFilter = ({ title, options }) => {
+
+import { CustomFiterProps } from "@/types"
+
+const CustomFilter = ({ title, options }: CustomFiterProps) => {
   return (
-    <div>CustomFilter</div>
+    <div className="w-fit">
+      CustomFilter
+    </div>
   )
 }
 
