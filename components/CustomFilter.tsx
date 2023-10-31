@@ -1,13 +1,13 @@
 'use client'
 
-import { CustomFiterProps } from "@/types"
+import { CustomFilterProps } from "@/types"
 import { updateSearchParams } from "@/utils"
 import { Listbox, Transition } from "@headlessui/react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { Fragment, useState } from "react"
 
-const CustomFilter = ({ title, options }: CustomFiterProps) => {
+const CustomFilter = ({ title, options }: CustomFilterProps) => {
 
   const router = useRouter();
   const [selected, setSelected] = useState(options[0])
