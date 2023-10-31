@@ -3,10 +3,24 @@
 import { CustomFiterProps } from "@/types"
 import { Listbox, Transition } from "@headlessui/react"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import { Fragment, useState } from "react"
 
 const CustomFilter = ({ title, options }: CustomFiterProps) => {
+
+  const router = useRouter();
   const [selected, setSelected] = useState(options[0])
+
+  const handleUpdateParams = (type: string, value: string) => {
+    const newPathName = '';
+
+    const searchParams = new URLSearchParams(window.location.search);
+    searchParams.set(type, value);
+
+    const newPathname = `${window.location.pathname}?${searchParams.toString()}`
+
+    router.push(newPathName)
+  }
   return (
     <div className="w-fit">
       <Listbox
